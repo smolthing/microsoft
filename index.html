@@ -110,6 +110,7 @@
     <script src="./script.js"></script>
     <script>
 
+    const START_INDEX = 100;
     document.querySelector('.close').addEventListener('click', function(event) {
         event.preventDefault();
 
@@ -128,8 +129,8 @@
             const maxX = desktop.clientWidth;
             const maxY = desktop.clientHeight;
 
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+            const randomX = Math.random() * maxX - START_INDEX;
+            const randomY = Math.random() * maxY - START_INDEX;
 
             newWindow.style.position = "fixed";
             newWindow.style.left = `${randomX}px`;
