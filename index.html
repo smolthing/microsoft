@@ -113,7 +113,11 @@
     document.querySelector('.close').addEventListener('click', function(event) {
         event.preventDefault();
 
+        let shouldCreateWindows = true;
+
         function createWindow() {
+            if (!shouldCreateWindows) return;
+
             const originalWindow = document.querySelector('#original-window');
             const newWindow = originalWindow.cloneNode(true);
             newWindow.id = ''; // Remove the ID from the cloned element
@@ -137,8 +141,12 @@
 
         // Start creating windows
         createWindow();
-    });
 
+        // Stop creating windows after 10 seconds
+        setTimeout(() => {
+            shouldCreateWindows = false;
+        }, 10000);
+    });
     </script>
   </body>
 </html>
